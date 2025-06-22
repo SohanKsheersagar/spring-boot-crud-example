@@ -48,6 +48,11 @@ public class ProductController {
         return service.deleteProduct(id);
     }
 
+    @GetMapping("/products/search")
+    public List<Product> searchProducts(@RequestParam String keyword) {
+        return service.searchProducts(keyword);
+    }
+
     @GetMapping("/health")
     public String healthCheck() {
         return "Service is up and running!";

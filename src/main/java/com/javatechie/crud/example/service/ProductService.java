@@ -4,6 +4,8 @@ import com.javatechie.crud.example.entity.Product;
 import com.javatechie.crud.example.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -44,6 +46,11 @@ public class ProductService {
         existingProduct.setPrice(product.getPrice());
         return repository.save(existingProduct);
     }
+
+    public List<Product> searchProducts(String keyword) {
+        return repository.findByNameContainingIgnoreCase(keyword);
+    }
+
 
 
 }
