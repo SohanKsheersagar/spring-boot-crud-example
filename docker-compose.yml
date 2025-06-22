@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mysql:
     image: mysql:8.0
@@ -10,10 +8,12 @@ services:
       MYSQL_DATABASE: javatechie
     ports:
       - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
     networks:
       - backend-net
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pGeetha123*"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -35,3 +35,6 @@ services:
 
 networks:
   backend-net:
+
+volumes:
+  mysql-data:

@@ -51,6 +51,10 @@ public class ProductService {
         return repository.findByNameContainingIgnoreCase(keyword);
     }
 
+    public List<Product> advancedSearch(String keyword, double min, double max) {
+        return repository.advancedSearch(keyword, min, max);
+    }
+
 
 
 }
